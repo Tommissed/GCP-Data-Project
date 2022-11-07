@@ -124,18 +124,20 @@ class ReadFile(beam.DoFn):
         yield clear_data
 
 
-class WriteCSVFIle(beam.DoFn):
+class WriteCSVFile(beam.DoFn):
 
     def __init__(self, bucket_name):
         self.bucket_name = bucket_name
 
     def start_bundle(self):
+        from google.cloud import storage
         self.client = storage.Client()
 
     def process(self, mylist):
-        df = pd.DataFrame(mylist, columns={'product_id': str, 'vendor': str, 'product_type': str, 'updated_at': str, 'created_at': str, 'option_ids': str})
+        df = pd.DataFrame(mylist, columns={'business_id': str, 'name': str, 'address': str, 'city': str, 'state': str, 'postal_code': str, 'stars': float, 'review_count': int, 'is_open': bool, 'attributes': dict, 'categories': str, 'hours': dict})
 
         bucket = self.client.get_bucket(self.bucket_name)
+
         bucket.blob(f"csv_exports.csv").upload_from_string(df.to_csv(index=False), 'text/csv')
 
 
