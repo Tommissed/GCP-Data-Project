@@ -145,8 +145,8 @@ class DataflowOptions(PipelineOptions):
 
     @classmethod
     def _add_argparse_args(cls, parser):
-        parser.add_argument('--input_path', type=str, default='gs://alex_dataflow_temp/input.json')
-        parser.add_argument('--output_bucket', type=str, default='alex_dataflow_temp')
+        parser.add_argument('--input_path', type=str, default='gs://yelp-reviews-4567/archive/yelp_academic_dataset_business.json')
+        parser.add_argument('--output_bucket', type=str, default='yelp-reviews-4567')
 
 
 def run(argv=None):
@@ -160,7 +160,7 @@ def run(argv=None):
         (pipeline
          | 'Start' >> beam.Create([None])
          | 'Read JSON' >> beam.ParDo(ReadFile(dataflow_options.input_path))
-         | 'Write CSV' >> beam.ParDo(WriteCSVFIle(dataflow_options.output_bucket))
+         | 'Write CSV' >> beam.ParDo(WriteCSVFile(dataflow_options.output_bucket))
          )
 
 
