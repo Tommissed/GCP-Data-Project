@@ -70,6 +70,7 @@ for dirname, _, filenames in os.walk('/archive'):
 #     user = l
 #     break
 
+# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'mystical-atlas-275519-9331dfc3575e.json'
 
 path = '/archive/yelp_academic_dataset_business.json'
 
