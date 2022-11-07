@@ -12,3 +12,6 @@
 # to bring in all pertinent modules for Python scripts to run without missing reference errors
 
 google-api-python-client==2.47.0
+google-cloud-storage==1.28.1
+pandas==1.5.0
+smart-open==2.0.0
