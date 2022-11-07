@@ -1,0 +1,14 @@
+#  to make sure that all Python modules are imported and match what are called upon in this repo:
+# enables a user to call:
+# ```
+# pip install -r
+# ```
+
+# the github Google Cloud platform repo suggests:
+# ```
+# pip install -U -r requirements.txt
+# ```
+# 
+# to bring in all pertinent modules for Python scripts to run without missing reference errors
+
+google-api-python-client==2.47.0
